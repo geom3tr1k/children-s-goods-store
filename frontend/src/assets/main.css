@@ -1,0 +1,21 @@
+@import './base.css';
+@import "tailwindcss";
+
+@font-face {
+    font-family: indiana;
+    src: url("../assets/fonts/ofont.ru_Adventure\ Indiana.ttf");
+}
+@font-face {
+    font-family: fredoka;
+    src: url("../assets/fonts/FredokaOne-Regular.ttf");
+}
+@font-face {
+    font-family: jolly;
+    src: url('../assets/fonts/JollySweaterRegular.ttf');
+}
+
+@theme {
+    --font-indiana: indiana, "sans-serif";
+    --font-fredoka: fredoka, "sans-serif";
+    --font-jolly: jolly, "sans-serif"
+}
