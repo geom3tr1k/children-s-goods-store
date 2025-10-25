@@ -23,16 +23,22 @@ async function login() {
 
         if (result.status === 200) {
             localStorage.setItem('auth', result.token)
-            router.push('/')
+            router.push('/account')
 
         } else {
             errors.value = 'Неверный логин или пароль'
-        }
+          }
     
 }
 </script>
 <template>
-  <div class="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#A5D8FF] to-[#FFD6E8]">
+  <div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-[#A5D8FF] to-[#FFD6E8] space-y-6">
+    <router-link
+      to="/"
+      class="w-1/10 text-center bg-[#3B82F6] text-white font-semibold py-3 rounded-xl hover:bg-[#2563EB] transition shadow-md "
+    >
+      Назад
+    </router-link>
     <div class="bg-white rounded-3xl shadow-2xl w-[90%] max-w-md p-8">
       <h1 class="text-4xl font-extrabold text-center text-[#3B82F6] mb-6 font-comfortaa">
         Вход в BabyLand
@@ -46,7 +52,7 @@ async function login() {
             type="email"
             placeholder="Введите email"
             required
-            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
+            class="text-gray-700 w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
           />
         </div>
 
@@ -57,7 +63,7 @@ async function login() {
             type="password"
             placeholder="Введите пароль"
             required
-            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
+            class="text-gray-700 w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3B82F6] transition"
           />
         </div>
 
@@ -69,9 +75,9 @@ async function login() {
         </button>
       </form>
 
-        <div v-if="errors" class="text-[#CD5C5C] text-center text-lg mt-4">
-            {{ errors }}
-        </div>
+      <div v-if="errors" class="text-[#CD5C5C] text-center text-lg mt-4">
+        {{ errors }}
+      </div>
 
       <p class="text-center text-gray-600 mt-6">
         Нет аккаунта?
@@ -82,6 +88,7 @@ async function login() {
     </div>
   </div>
 </template>
+
 
 
 <style scoped>

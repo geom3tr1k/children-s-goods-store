@@ -14,19 +14,32 @@ class AuthController extends Controller
             'email' => 'email|required|unique:users,email',
             'password' => 'required',
             'lastName' => 'required',
-            'firstName' => 'required'
+            'firstName' => 'required',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+
         ]);
-        $user = User::create([
-            'email' => $request -> email,
-            'password' => Hash::make($request -> password),
-            'lastName' => $request -> lastName,
-            'firstName' => $request -> firstName
-        ]);
-        $token = $user -> createToken('API Token') -> plainTextToken;
-        return response() -> json([
-            "message"=> "User registered successfully",
-            "token" => $token
-        ]);
+        $avatarPath = null;
+if ($request->hasFile('avatar')) {
+    $avatarPath = $request->file('avatar')->store('avatars', 'public');
+} else {
+    $avatarPath = 'avatars/default.png';
+}
+
+$user = User::create([
+    'email' => $request->email,
+    'password' => Hash::make($request->password),
+    'lastName' => $request->lastName,
+    'firstName' => $request->firstName,
+    'avatar' => $avatarPath
+]);
+
+$token = $user->createToken('API Token')->plainTextToken;
+
+return response()->json([
+    "message"=> "User registered successfully",
+    "token" => $token,
+        "avatar" => asset('storage/' . $avatarPath)
+]);
     }
 
     public function authorisation(Request $request) {

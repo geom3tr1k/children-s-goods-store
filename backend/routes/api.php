@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/reg', [AuthController::class, 'reg']);
 Route::post('/login', [AuthController::class, 'authorisation']);
+Route::post('/logout', [AuthController::class, 'logOut'])->middleware('auth:sanctum');
