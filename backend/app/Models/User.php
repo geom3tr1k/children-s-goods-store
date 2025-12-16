@@ -23,7 +23,8 @@ class User extends Authenticatable
         'firstName',
         'email',
         'password',
-        'avatar'
+        'avatar',
+        'role'
     ];
 
     /**
@@ -48,4 +49,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+protected $appends = ['avatar_url'];
+
+    public function getAvatarUrlAttribute()
+{
+    return $this->avatar
+        ? url('storage/' . $this->avatar)
+        : url('storage/avatars/default.png');
+}
 }

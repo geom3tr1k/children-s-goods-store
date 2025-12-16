@@ -1,21 +1,26 @@
 @import './base.css';
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @font-face {
-    font-family: indiana;
-    src: url("../assets/fonts/ofont.ru_Adventure\ Indiana.ttf");
+  font-family: indiana;
+  src: url('../assets/fonts/ofont.ru_Adventure\ Indiana.ttf');
 }
 @font-face {
-    font-family: fredoka;
-    src: url("../assets/fonts/FredokaOne-Regular.ttf");
+  font-family: fredoka;
+  src: url('../assets/fonts/FredokaOne-Regular.ttf');
 }
 @font-face {
-    font-family: jolly;
-    src: url('../assets/fonts/JollySweaterRegular.ttf');
+  font-family: jolly;
+  src: url('../assets/fonts/JollySweaterRegular.ttf');
 }
-
+@font-face {
+  font-family: mont;
+  src: url('../assets/fonts/Montserrat-VariableFont_wght.ttf');
+  font-weight: 600;
+}
 @theme {
-    --font-indiana: indiana, "sans-serif";
-    --font-fredoka: fredoka, "sans-serif";
-    --font-jolly: jolly, "sans-serif"
+  --font-indiana: indiana, 'sans-serif';
+  --font-fredoka: fredoka, 'sans-serif';
+  --font-jolly: jolly, 'sans-serif';
+  --font-mont: mont, 'sans-serif';
 }
